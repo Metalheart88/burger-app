@@ -1,4 +1,5 @@
 import * as actionTypes from "./actionTypes";
+import * as API from "../../config/api_key";
 import axios from "axios";
 
 export const authStart = () => {
@@ -48,10 +49,12 @@ export const auth = (email, password, isSignup) => {
       returnSecureToken: true
     };
     let url =
-      "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyBP0xRDMZ0gykw3P-udufnAOI0-KWOSd4A";
+      "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=" +
+      API.GOOGLE_FIREBASE_KEY;
     if (!isSignup) {
       url =
-        "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBP0xRDMZ0gykw3P-udufnAOI0-KWOSd4A";
+        "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" +
+        API.GOOGLE_FIREBASE_KEY;
     }
     axios
       .post(url, authData)
